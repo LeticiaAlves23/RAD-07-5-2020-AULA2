@@ -32,3 +32,4 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+"# RAD-07-5-2020-AULA2" 
