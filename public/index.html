@@ -1,17 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
+<html>
   <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
+    <h1>Usuario</h1>
+    <form action="/users/signup" method="POST">
+      E-mail: <input name="email" type="text" /><br />
+      Password: <input name="password" type="password" /><br />
+     <input type="submit" value="login" />
+    </form>
+     <label>
+       Bem vindo
+     </label>
   </body>
+
+  <div id="result"></div>
+
+  <script>
+  // Check browser support
+  if (typeof(Storage) !== "undefined") {
+    // Store
+    localStorage.setItem("lastname", "Smith");
+    // Retrieve
+    document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+  } else {
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+  }
+
+  $.ajax( {
+    url: 'http://localhost:8080/models/user.js',
+    type: 'GET',
+    beforeSend : function( xhr ) {
+        xhr.setRequestHeader( "Authorization", "Bearer " + token );
+    },
+    success: function( response ) {
+        console.log(response);
+    }
+  }
+  </script>
+  
 </html>
